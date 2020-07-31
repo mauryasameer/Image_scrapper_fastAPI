@@ -1,0 +1,2 @@
+fatapi
+uvicorn
