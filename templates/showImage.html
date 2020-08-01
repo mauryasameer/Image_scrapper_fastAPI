@@ -10,7 +10,7 @@
     <table>
 {% for user_image in user_images %}
         <td width="400">
-            <img width="300" height="300" src="{{ url_for('static', filename=user_image) }}" alt="User Image"></td>
+            <img width="300" height="300" src="{{ user_image }}" alt="User Image"></td>
 {% endfor %}
     </table>
 </div>

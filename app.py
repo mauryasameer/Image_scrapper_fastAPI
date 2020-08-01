@@ -22,7 +22,7 @@ def list_only_jpg_files(folder_name):
     for file in list_of_files:
         name_array= file.split('.')
         if(name_array[1]=='jpg'):
-            list_of_jpg_files.append(file)
+            list_of_jpg_files.append(folder_name+'/'+file)
         else:
             print('filename does not end withn jpg')
     return list_of_jpg_files
@@ -40,10 +40,10 @@ def root(request: Request):
 async def searchImages(req:res):
     data=await req.form()
     crw = crawler()
-    await crw.search_and_download(data['keyword'])
+    crw.search_and_download(data['keyword'])
     output_location = crw.TARGET_LOCATION+f"/{data['keyword']}"
     im_list=list_only_jpg_files(output_location)
     return templates.TemplateResponse('showimage.html',{
             'request':req,
-            'user_images':im_list
+            'user_images':im_list,
     })
